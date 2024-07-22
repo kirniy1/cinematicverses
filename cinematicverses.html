@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic Verses: Auteur Poetry</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #000;
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    color: #f7d794;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.poem-card {
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.poem-text {
+    font-family: 'Playfair Display', serif;
+    font-style: regular;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+.poem-text p {
+    margin: 0 0 1.5em 0;
+}
+
+.poem-line {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.initial {
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.director-button {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #fff;
+    background: none;
+    border: 2px solid;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.director-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(255,255,255,0.2);
+}
+
+.director-button .initial {
+    font-weight: bold;
+}
+
+.carax { border-color: #4ecdc4; color: #4ecdc4; }
+.cronenberg { border-color: #ff6b6b; color: #ff6b6b; }
+.anderson { border-color: #feca57; color: #feca57; }
+.cassavetes { border-color: #54a0ff; color: #54a0ff; }
+.zhangke { border-color: #5f27cd; color: #5f27cd; }
+.balabanov { border-color: #ff6b6b; color: #ff6b6b; }
+.jarmusch { border-color: #3498db; color: #3498db; }
+.lynch { border-color: #9b59b6; color: #9b59b6; }
+.truffaut { border-color: #2ecc71; color: #2ecc71; }
+.polanski { border-color: #e74c3c; color: #e74c3c; }
+
+.audio-player {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.play-button {
+    background: #f7d794;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-button:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+.play-icon {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 20px;
+    border-color: transparent transparent transparent #000;
+    margin-left: 5px;
+}
+
+.lang-toggle {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.lang-toggle button {
+    background: none;
+    border: 1px solid #f7d794;
+    color: #f7d794;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.lang-toggle button.active {
+    background: #f7d794;
+    color: #000;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cinematic Verses: Auteur Poetry</h1>
+        
+        <button class="director-button carax" onclick="togglePoem('carax')">
+            <span class="initial">L</span>eos <span class="initial">C</span>arax
+        </button>
+        <div class="poem-card" id="carax">
+            <div class="lang-toggle">
+                <button onclick="toggleLang('carax', 'en')" class="active">EN</button>
+                <button onclick="toggleLang('carax', 'ru')">RU</button>
+            </div>
+            <div class="poem-text" lang="en">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>L</b></span>yrical <span class="initial"><b>L</b></span>eos, <b>l</b>ensing <b>l</b>ove's <b>l</b>abyrinth,</span>
+                    <span class="poem-line"><span class="initial"><b>L</b></span>uminous, <b>l</b>ithe <b>l</b>overs <b>l</b>eaping,</span>
+                    <span class="poem-line"><span class="initial"><b>L</b></span>amenting <b>l</b>ife's <b>l</b>istless <b>l</b>anguor.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>C</b></span>arax's <span class="initial"><b>c</b></span>inema, <b>c</b>ryptically <b>c</b>arved,</span>
+                    <span class="poem-line"><span class="initial"><b>C</b></span>aptures <b>c</b>apricious, <b>c</b>haotic <b>c</b>rescendos,</span>
+                    <span class="poem-line"><span class="initial"><b>C</b></span>rafting <b>c</b>elluloid's <b>c</b>urious <b>c</b>horeography.</span>
+                </p>
+            </div>
+            <div class="poem-text" lang="ru" style="display:none;">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Л</b></span>иричный <span class="initial"><b>Л</b></span>еос, <b>л</b>инзирующий <b>л</b>абиринт <b>л</b>юбви,</span>
+                    <span class="poem-line"><span class="initial"><b>Л</b></span>учезарные, <b>л</b>ёгкие <b>л</b>юбовники <b>л</b>етят,</span>
+                    <span class="poem-line"><span class="initial"><b>Л</b></span>елея <b>л</b>енивую <b>л</b>иричность жизни.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>К</b></span>инематограф <span class="initial"><b>К</b></span>аракса, <b>к</b>риптически <b>к</b>роенный,</span>
+                    <span class="poem-line"><span class="initial"><b>К</b></span>аптирует <b>к</b>апризные, <b>к</b>аотичные <b>к</b>рещендо,</span>
+                    <span class="poem-line"><span class="initial"><b>К</b></span>уя <b>к</b>инопленки <b>к</b>олоритную <b>к</b>инетику.</span>
+                </p>
+            </div>
+            <div class="audio-player">
+                <button class="play-button" onclick="toggleAudio('carax-audio')">
+                    <div class="play-icon"></div>
+                </button>
+                <audio id="carax-audio" src="media/carax.mp3"></audio>
+            </div>
+        </div>
+        
+        <button class="director-button cronenberg" onclick="togglePoem('cronenberg')">
+            <span class="initial">D</span>avid <span class="initial">C</span>ronenberg
+        </button>
+        <div class="poem-card" id="cronenberg">
+            <div class="lang-toggle">
+                <button onclick="toggleLang('cronenberg', 'en')" class="active">EN</button>
+                <button onclick="toggleLang('cronenberg', 'ru')">RU</button>
+            </div>
+            <div class="poem-text" lang="en">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>D</b></span>aring <span class="initial"><b>D</b></span>avid <b>d</b>elves <b>d</b>eep,</span>
+                    <span class="poem-line"><span class="initial"><b>D</b></span>issecting <b>d</b>reams, <b>d</b>isturbing <b>d</b>eeds,</span>
+                    <span class="poem-line"><span class="initial"><b>D</b></span>econstructing <b>d</b>esperate <b>d</b>esires.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>C</b></span>ronenberg's <span class="initial"><b>c</b></span>inema, <b>c</b>oolly <b>c</b>ruel,</span>
+                    <span class="poem-line"><span class="initial"><b>C</b></span>hallenges <b>c</b>onventions, <b>c</b>reates <b>c</b>haos,</span>
+                    <span class="poem-line"><span class="initial"><b>C</b></span>aptivating, <b>c</b>hilling, <b>c</b>erebral.</span>
+                </p>
+            </div>
+            <div class="poem-text" lang="ru" style="display:none;">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>ерзкий <span class="initial"><b>Д</b></span>эвид <b>д</b>окапывается <b>д</b>о глубин,</span>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>иссекция <b>д</b>ремлющих, <b>д</b>ейств <b>д</b>естабилизирующих,</span>
+                    <span class="initial"><b>Д</b></span>еконструкция <b>д</b>ерзновенных <b>д</b>езидератов.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>К</b></span>инематограф <span class="initial"><b>К</b></span>роненберга, <b>к</b>роваво-хладнокровный,</span>
+                    <span class="poem-line"><span class="initial"><b>К</b></span>онвенции <b>к</b>олеблет, <b>к</b>реатуры <b>к</b>ультивирует,</span>
+                    <span class="poem-line"><span class="initial"><b>К</b></span>аптивирующий, <b>к</b>олючий, <b>к</b>ерефеальный.</span>
+                </p>
+            </div>
+            <div class="audio-player">
+                <button class="play-button" onclick="toggleAudio('cronenberg-audio')">
+                    <div class="play-icon"></div>
+                </button>
+                <audio id="cronenberg-audio" src="media/cronenberg.mp3"></audio>
+            </div>
+        </div>
+        
+        <button class="director-button anderson" onclick="togglePoem('anderson')">
+            <span class="initial">P</span>aul <span class="initial">T</span>homas <span class="initial">A</span>nderson
+        </button>
+        <div class="poem-card" id="anderson">
+            <div class="lang-toggle">
+                <button onclick="toggleLang('anderson', 'en')" class="active">EN</button>
+                <button onclick="toggleLang('anderson', 'ru')">RU</button>
+            </div>
+            <div class="poem-text" lang="en">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>P</b></span>eculiar <span class="initial"><b>P</b></span>aul, <b>p</b>ainting <b>p</b>anoramas,</span>
+                    <span class="poem-line"><span class="initial"><b>P</b></span>robing <b>p</b>syches, <b>p</b>arsing <b>p</b>asts,</span>
+                    <span class="poem-line"><span class="initial"><b>P</b></span>ortraying <b>p</b>oignant, <b>p</b>rofound <b>p</b>ersonas.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>T</b></span>homas' <b>t</b>ales <b>t</b>ranscend <b>t</b>ime,</span>
+                    <span class="poem-line"><span class="initial"><b>T</b></span>apestries of <b>t</b>hought, <b>t</b>hrobbing, <b>t</b>erse,</span>
+                    <span class="poem-line"><span class="initial"><b>T</b></span>wisting <b>t</b>ruths, <b>t</b>antalizing <b>t</b>urns.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>A</b></span>nderson's <span class="initial"><b>a</b></span>mbitious, <b>a</b>rtful <b>a</b>cts,</span>
+                    <span class="poem-line"><span class="initial"><b>A</b></span>lchemize <b>a</b>nxieties, <b>a</b>mplify <b>a</b>we,</span>
+                    <span class="poem-line"><span class="initial"><b>A</b></span>stounding <b>a</b>udiences, <b>a</b>lways <b>a</b>glow.</span>
+                </p>
+            </div>
+            <div class="poem-text" lang="ru" style="display:none;">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>П</b></span>ричудливый <span class="initial"><b>П</b></span>ол, <b>п</b>ишущий <b>п</b>анорамы,</span>
+                    <span class="poem-line"><span class="initial"><b>П</b></span>роницая <b>п</b>сихику, <b>п</b>репарируя <b>п</b>рошлое,</span>
+                    <span class="poem-line"><span class="initial"><b>П</b></span>оказывая <b>п</b>ронзительные, глубокие <b>п</b>ерсонажи.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Т</b></span>омаса <b>т</b>алант <b>т</b>ворит <b>т</b>рансцендентность,</span>
+                    <span class="poem-line"><span class="initial"><b>Т</b></span>онкие <b>т</b>екстуры <b>т</b>ревожных <b>т</b>ем,</span>
+                    <span class="poem-line"><span class="initial"><b>Т</b></span>рансформируя <b>т</b>айны, <b>т</b>ерзая <b>т</b>абу.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>А</b></span>ндерсона <span class="initial"><b>а</b></span>мбициозные, <b>а</b>ртистичные <b>а</b>кты,</span>
+                    <span class="poem-line"><span class="initial"><b>А</b></span>лхимизируют <b>а</b>нксиозность, <b>а</b>мплифицируют благоговение,</span>
+                    <span class="poem-line"><span class="initial"><b>А</b></span>удиторию ошеломляя, <b>a</b>lways сияя.</span>
+                </p>
+            </div>
+            <div class="audio-player">
+                <button class="play-button" onclick="toggleAudio('anderson-audio')">
+                    <div class="play-icon"></div>
+                </button>
+                <audio id="anderson-audio" src="media/anderson.mp3"></audio>
+            </div>
+        </div>
+        
+        <button class="director-button cassavetes" onclick="togglePoem('cassavetes')">
+            <span class="initial">J</span>ohn <span class="initial">C</span>assavetes
+        </button>
+        <div class="poem-card" id="cassavetes">
+            <div class="lang-toggle">
+                <button onclick="toggleLang('cassavetes', 'en')" class="active">EN</button>
+                <button onclick="toggleLang('cassavetes', 'ru')">RU</button>
+            </div>
+            <div class="poem-text" lang="en">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>J</b></span>agged <span class="initial"><b>J</b></span>ohn, <b>j</b>ostling <b>j</b>udgments,</span>
+                    <span class="poem-line"><span class="initial"><b>J</b></span>azzing, <b>j</b>ittering, <b>j</b>olting <b>j</b>aunts,</span>
+                    <span class="poem-line"><span class="initial"><b>J</b></span>uxtaposing <b>j</b>oy, <b>j</b>eopardy, <b>j</b>est.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>C</b></span>assavetes' <span class="initial"><b>c</b></span>andid <b>c</b>amera <b>c</b>aptures,</span>
+                    <span class="poem-line"><span class="initial"><b>C</b></span>haotic, <b>c</b>harged <b>c</b>haracter <b>c</b>lashes,</span>
+                    <span class="poem-line"><span class="initial"><b>C</b></span>rafting <b>c</b>inema's <b>c</b>ourageous <b>c</b>ore.</span>
+                </p>
+            </div>
+            <div class="poem-text" lang="ru" style="display:none;">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>ерзкий <span class="initial"><b>Д</b></span>жон, <b>д</b>вигающий <b>д</b>огмы,</span>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>жазовые, <b>д</b>рожащие, <b>д</b>ерзкие <b>д</b>вижения,</span>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>емонстрируя <b>д</b>уализм <b>д</b>рамы, <b>д</b>олга, <b>д</b>обродушия.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>К</b></span>ассаветиса <span class="initial"><b>к</b></span>амера <b>к</b>аптирует <b>к</b>андидно,</span>
+                    <span class="poem-line"><span class="initial"><b>К</b></span>онфликты <b>к</b>арактеров, <b>к</b>аотичные, <b>к</b>олоритные,</span>
+                    <span class="poem-line"><span class="initial"><b>К</b></span>уя <b>к</b>инематографа <b>к</b>онцепцию отважную.</span>
+                </p>
+            </div>
+            <div class="audio-player">
+                <button class="play-button" onclick="toggleAudio('cassavetes-audio')">
+                    <div class="play-icon"></div>
+                </button>
+                <audio id="cassavetes-audio" src="media/cassavetes.mp3"></audio>
+            </div>
+        </div>
+        
+        <button class="director-button zhangke" onclick="togglePoem('zhangke')">
+            <span class="initial">J</span>ia <span class="initial">Z</span>hangke
+        </button>
+        <div class="poem-card" id="zhangke">
+            <div class="lang-toggle">
+                <button onclick="toggleLang('zhangke', 'en')" class="active">EN</button>
+                <button onclick="toggleLang('zhangke', 'ru')">RU</button>
+            </div>
+            <div class="poem-text" lang="en">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>J</b></span>udicious <span class="initial"><b>J</b></span>ia, <b>j</b>ourneying <b>j</b>ustly,</span>
+                    <span class="poem-line"><span class="initial"><b>J</b></span>uxtaposing <b>j</b>oys, <b>j</b>arring <b>j</b>olts,</span>
+                    <span class="poem-line"><span class="initial"><b>J</b></span>aded <b>j</b>ourneys, <b>j</b>ubilant <b>j</b>unctures.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Z</b></span>hangke's <span class="initial"><b>z</b></span>eitgeist, <b>z</b>ealously <b>z</b>oned,</span>
+                    <span class="poem-line"><span class="initial"><b>Z</b></span>ooms, <b>z</b>eroes, <b>z</b>igzags through,</span>
+                    <span class="poem-line"><span class="initial"><b>Z</b></span>estful, <b>z</b>en-like, <b>z</b>eniths, nadirs.</span>
+                </p>
+            </div>
+            <div class="poem-text" lang="ru" style="display:none;">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Р</b></span>ассудительный <span class="initial"><b>Ц</b></span>зя, <b>р</b>ационально <b>р</b>ассказывающий,</span>
+                    <span class="poem-line"><span class="initial"><b>Р</b></span>адости <b>р</b>ядом с <b>р</b>езкими <b>р</b>ывками,</span>
+                    <span class="poem-line"><span class="initial"><b>Ц</b></span>иничные <b>ц</b>епи, <b>ц</b>ветущие <b>ц</b>ентры.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Ч</b></span>жанкэ <span class="initial"><b>ч</b></span>еканит <b>ч</b>уткий <b>ч</b>ертеж,</span>
+                    <span class="poem-line"><span class="initial"><b>Ч</b></span>ередуя, <b>ч</b>еканя, <b>ч</b>ерез <b>ч</b>ащу,</span>
+                    <span class="poem-line"><span class="initial"><b>Ч</b></span>увственный, <b>ч</b>естный, <b>ч</b>ерез <b>ч</b>ерное, <b>ч</b>ерез белое.</span>
+                </p>
+            </div>
+            <div class="audio-player">
+                <button class="play-button" onclick="toggleAudio('zhangke-audio')">
+                    <div class="play-icon"></div>
+                </button>
+                <audio id="zhangke-audio" src="media/zhangke.mp3"></audio>
+            </div>
+        </div>
+        
+        <button class="director-button balabanov" onclick="togglePoem('balabanov')">
+            <span class="initial">A</span>leksei <span class="initial">B</span>alabanov
+        </button>
+        <div class="poem-card" id="balabanov">
+            <div class="lang-toggle">
+                <button onclick="toggleLang('balabanov', 'en')" class="active">EN</button>
+                <button onclick="toggleLang('balabanov', 'ru')">RU</button>
+            </div>
+            <div class="poem-text" lang="en">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>A</b></span>udacious <span class="initial"><b>A</b></span>leksei, <b>a</b>rtfully <b>a</b>rranging,</span>
+                    <span class="poem-line"><span class="initial"><b>A</b></span>ustere <b>a</b>esthetics, <b>a</b>brasive <b>a</b>llure,</span>
+                    <span class="poem-line"><span class="initial"><b>A</b></span>cerbic, <b>a</b>uthentic, <b>a</b>lways <b>a</b>stounding.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>B</b></span>alabanov's <span class="initial"><b>b</b></span>old, <b>b</b>iting narratives,</span>
+                    <span class="poem-line"><span class="initial"><b>B</b></span>lending <b>b</b>leak <b>b</b>eauty, <b>b</b>rash <b>b</b>ravura,</span>
+                    <span class="poem-line"><span class="initial"><b>B</b></span>ewitching, <b>b</b>ewildering, <b>b</b>eyond <b>b</b>ounds.</span>
+                </p>
+            </div>
+            <div class="poem-text" lang="ru" style="display:none;">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>А</b></span>вантюрный <span class="initial"><b>А</b></span>лексей, <b>а</b>ртистично <b>а</b>ранжирующий,</span>
+                    <span class="poem-line"><span class="initial"><b>А</b></span>скетичная <b>а</b>стетика, <b>а</b>бразивная <b>а</b>ттрактивность,</span>
+                    <span class="initial"><b>А</b></span>дский, <b>а</b>утентичный, <b>а</b>бсолютно <b>а</b>шеломляющий.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Б</b></span>алабанова <span class="initial"><b>б</b></span>ескомпромиссные, <b>б</b>ьющие <b>б</b>ыли,</span>
+                    <span class="poem-line"><span class="initial"><b>Б</b></span>лендят <b>б</b>еспросветную <b>б</b>еспощадность, <b>б</b>езудержную <b>б</b>раваду,</span>
+                    <span class="poem-line"><span class="initial"><b>Б</b></span>еспокоя, <b>б</b>удоража, <b>б</b>ез <b>б</b>ерегов.</span>
+                </p>
+            </div>
+            <div class="audio-player">
+                <button class="play-button" onclick="toggleAudio('balabanov-audio')">
+                    <div class="play-icon"></div>
+                </button>
+                <audio id="balabanov-audio" src="media/balabanov.mp3"></audio>
+            </div>
+        </div>
+
+        <button class="director-button jarmusch" onclick="togglePoem('jarmusch')">
+            <span class="initial">J</span>im <span class="initial">J</span>armusch
+        </button>
+        <div class="poem-card" id="jarmusch">
+            <div class="lang-toggle">
+                <button onclick="toggleLang('jarmusch', 'en')" class="active">EN</button>
+                <button onclick="toggleLang('jarmusch', 'ru')">RU</button>
+            </div>
+            <div class="poem-text" lang="en">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>J</b></span>aunty <span class="initial"><b>J</b></span>im, <b>j</b>azzing through <b>j</b>ourneys,</span>
+                    <span class="poem-line"><span class="initial"><b>J</b></span>uxtaposing <b>j</b>aded <b>j</b>oys, <b>j</b>umbled <b>j</b>igsaw,</span>
+                    <span class="poem-line"><span class="initial"><b>J</b></span>aunts <b>j</b>oining <b>j</b>olts of <b>j</b>uxtaposed <b>j</b>ests.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>J</b></span>armusch's <span class="initial"><b>j</b></span>ourney, <b>j</b>oining genres, <b>j</b>uggling,</span>
+                    <span class="poem-line"><span class="initial"><b>J</b></span>aded <b>j</b>ackdaws <b>j</b>ostling, <b>j</b>iving, <b>j</b>umping,</span>
+                    <span class="poem-line"><span class="initial"><b>J</b></span>uxtaposed <b>j</b>ewels, <b>j</b>azz-infused <b>j</b>ubilation.</span>
+                </p>
+            </div>
+            <div class="poem-text" lang="ru" style="display:none;">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>ерзкий <span class="initial"><b>Д</b></span>жим, <b>д</b>жазируя сквозь <b>д</b>ороги,</span>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>ерзко <b>д</b>жонглируя <b>д</b>жазовым <b>д</b>жемом <b>д</b>ействий,</span>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>вижения <b>д</b>ерзновенно <b>д</b>емонстрируют <b>д</b>ействительность.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>жармуша <span class="initial"><b>д</b></span>жаз, <b>д</b>жонглирующий жанрами,</span>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>ерзкие <b>д</b>вижения, <b>д</b>инамичные, <b>д</b>ерзающие,</span>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>жазовый <b>д</b>жем, <b>д</b>ивное <b>д</b>ейство <b>д</b>уши.</span>
+                </p>
+            </div>
+            <div class="audio-player">
+                <button class="play-button" onclick="toggleAudio('jarmusch-audio')">
+                    <div class="play-icon"></div>
+                </button>
+                <audio id="jarmusch-audio" src="media/jarmusch.mp3"></audio>
+            </div>
+        </div>
+        
+        <button class="director-button lynch" onclick="togglePoem('lynch')">
+            <span class="initial">D</span>avid <span class="initial">L</span>ynch
+        </button>
+        <div class="poem-card" id="lynch">
+            <div class="lang-toggle">
+                <button onclick="toggleLang('lynch', 'en')" class="active">EN</button>
+                <button onclick="toggleLang('lynch', 'ru')">RU</button>
+            </div>
+            <div class="poem-text" lang="en">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>D</b></span>reamy <span class="initial"><b>D</b></span>avid <b>d</b>elves <b>d</b>eep,</span>
+                    <span class="poem-line"><span class="initial"><b>D</b></span>arkness <b>d</b>ancing with <b>d</b>aylight <b>d</b>reams,</span>
+                    <span class="poem-line"><span class="initial"><b>D</b></span>isturbing <b>d</b>imensions, <b>d</b>azzling <b>d</b>issonance.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>L</b></span>ynch's <span class="initial"><b>l</b></span>abyrinthine <b>l</b>andscapes <b>l</b>oom,</span>
+                    <span class="poem-line"><span class="initial"><b>L</b></span>uring <b>l</b>isteners to <b>l</b>ost <b>l</b>ogic,</span>
+                    <span class="poem-line"><span class="initial"><b>L</b></span>ingering <b>l</b>ike <b>l</b>ucid <b>l</b>ullabies.</span>
+                </p>
+            </div>
+            <div class="poem-text" lang="ru" style="display:none;">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>ремлющий <span class="initial"><b>Д</b></span>эвид <b>д</b>окапывается <b>д</b>о глубин,</span>
+                    <span class="poem-line"><span class="initial"><b>Д</b></span>ень и ночь <b>д</b>вижутся в <b>д</b>ивном <b>д</b>уэте,</span>
+                    <span class="initial"><b>Д</b></span>ерзкие <b>д</b>иссонансы <b>д</b>ивно <b>д</b>езориентируют.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Л</b></span>инча <span class="initial"><b>л</b></span>абиринты <b>л</b>оманых <b>л</b>иний,</span>
+                    <span class="poem-line"><span class="initial"><b>Л</b></span>овят <b>л</b>юбителей <b>л</b>огики <b>л</b>ожной,</span>
+                    <span class="poem-line"><span class="initial"><b>Л</b></span>аская <b>л</b>укаво <b>л</b>иричной <b>л</b>юбовью.</span>
+                </p>
+            </div>
+            <div class="audio-player">
+                <button class="play-button" onclick="toggleAudio('lynch-audio')">
+                    <div class="play-icon"></div>
+                </button>
+                <audio id="lynch-audio" src="media/lynch.mp3"></audio>
+            </div>
+        </div>
+        
+        <button class="director-button truffaut" onclick="togglePoem('truffaut')">
+            <span class="initial">F</span>rançois <span class="initial">T</span>ruffaut
+        </button>
+        <div class="poem-card" id="truffaut">
+            <div class="lang-toggle">
+                <button onclick="toggleLang('truffaut', 'en')" class="active">EN</button>
+                <button onclick="toggleLang('truffaut', 'ru')">RU</button>
+            </div>
+            <div class="poem-text" lang="en">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>F</b></span>luid <span class="initial"><b>F</b></span>rançois, <b>f</b>raming <b>f</b>eelings,</span>
+                    <span class="poem-line"><span class="initial"><b>F</b></span>ascinating <b>f</b>ilmic <b>f</b>lourishes <b>f</b>low,</span>
+                    <span class="poem-line"><span class="initial"><b>F</b></span>reedom <b>f</b>inds <b>f</b>orm, <b>f</b>lourishing, <b>f</b>ree.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>T</b></span>ruffaut's <span class="initial"><b>t</b></span>ender <b>t</b>ales <b>t</b>wirl,</span>
+                    <span class="poem-line"><span class="initial"><b>T</b></span>imeless <b>t</b>reasures, <b>t</b>ruthfully <b>t</b>old,</span>
+                    <span class="poem-line"><span class="initial"><b>T</b></span>ranscending <b>t</b>radition, <b>t</b>ouching <b>t</b>imelessness.</span>
+                </p>
+            </div>
+            <div class="poem-text" lang="ru" style="display:none;">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Ф</b></span>ранцузский <span class="initial"><b>Ф</b></span>рансуа, <b>ф</b>ормирующий <b>ф</b>еерию,</span>
+                    <span class="poem-line"><span class="initial"><b>Ф</b></span>антастические <b>ф</b>ильмы <b>ф</b>онтанируют,</span>
+                    <span class="initial"><b>Ф</b></span>орма <b>ф</b>иксирует <b>ф</b>илигранную <b>ф</b>антазию.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Т</b></span>рюффо <span class="initial"><b>т</b></span>рогательно <b>т</b>ворит,</span>
+                    <span class="poem-line"><span class="initial"><b>Т</b></span>онко <b>т</b>ранслируя <b>т</b>айны <b>т</b>ворчества,</span>
+                    <span class="poem-line"><span class="initial"><b>Т</b></span>рансцендентно <b>т</b>рансформируя <b>т</b>радиции.</span>
+                </p>
+            </div>
+            <div class="audio-player">
+                <button class="play-button" onclick="toggleAudio('truffaut-audio')">
+                    <div class="play-icon"></div>
+                </button>
+                <audio id="truffaut-audio" src="media/truffaut.mp3"></audio>
+            </div>
+        </div>
+        
+        <button class="director-button polanski" onclick="togglePoem('polanski')">
+            <span class="initial">R</span>oman <span class="initial">P</span>olanski
+        </button>
+        <div class="poem-card" id="polanski">
+            <div class="lang-toggle">
+                <button onclick="toggleLang('polanski', 'en')" class="active">EN</button>
+                <button onclick="toggleLang('polanski', 'ru')">RU</button>
+            </div>
+            <div class="poem-text" lang="en">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>R</b></span>ogue <span class="initial"><b>R</b></span>oman, <b>r</b>evealing <b>r</b>ealities,</span>
+                    <span class="poem-line"><span class="initial"><b>R</b></span>avishing <b>r</b>aw <b>r</b>ealms, <b>r</b>uthlessly <b>r</b>eal,</span>
+                    <span class="initial"><b>R</b></span>efracting <b>r</b>eason through <b>r</b>iptide <b>r</b>evelations.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>P</b></span>olanski's <span class="initial"><b>p</b></span>oignant <b>p</b>ictures <b>p</b>enetrate,</span>
+                    <span class="poem-line"><span class="initial"><b>P</b></span>rovoking <b>p</b>rofound <b>p</b>sychological <b>p</b>robes,</span>
+                    <span class="poem-line"><span class="initial"><b>P</b></span>ainting <b>p</b>aranoia with <b>p</b>recise <b>p</b>recision.</span>
+                </p>
+            </div>
+            <div class="poem-text" lang="ru" style="display:none;">
+                <p>
+                    <span class="poem-line"><span class="initial"><b>Р</b></span>ешительный <span class="initial"><b>Р</b></span>оман, <b>р</b>аскрывающий <b>р</b>еальности,</span>
+                    <span class="poem-line"><span class="initial"><b>Р</b></span>азрушая <b>р</b>амки, <b>р</b>адикально <b>р</b>еалистичный,</span>
+                    <span class="initial"><b>Р</b></span>ассекая <b>р</b>азум <b>р</b>езкими <b>р</b>евеляциями.</span>
+                </p>
+                <p>
+                    <span class="poem-line"><span class="initial"><b>П</b></span>оланского <span class="initial"><b>п</b></span>ронзительные <b>п</b>олотна <b>п</b>роникают,</span>
+                    <span class="poem-line"><span class="initial"><b>П</b></span>ровоцируя <b>п</b>сихологические <b>п</b>огружения,</span>
+                    <span class="poem-line"><span class="initial"><b>П</b></span>исьмо <b>п</b>аранойи <b>п</b>редельно <b>п</b>рецизионно.</span>
+                </p>
+            </div>
+            <div class="audio-player">
+                <button class="play-button" onclick="toggleAudio('polanski-audio')">
+                    <div class="play-icon"></div>
+                </button>
+                <audio id="polanski-audio" src="media/polanski.mp3"></audio>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePoem(id) {
+            const card = document.getElementById(id);
+            const allCards = document.querySelectorAll('.poem-card');
+            allCards.forEach(c => {
+                if (c.id !== id) {
+                    c.style.display = 'none';
+                    c.style.opacity = '0';
+                }
+            });
+            if (card.style.display === 'none' || card.style.display === '') {
+                card.style.display = 'block';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                }, 50);
+            } else {
+                card.style.opacity = '0';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 500);
+            }
+        }
+
+        function toggleLang(id, lang) {
+            const card = document.getElementById(id);
+            const enText = card.querySelector('[lang="en"]');
+            const ruText = card.querySelector('[lang="ru"]');
+            const enButton = card.querySelector('.lang-toggle button:first-child');
+            const ruButton = card.querySelector('.lang-toggle button:last-child');
+            if (lang === 'en') {
+                enText.style.display = 'block';
+                ruText.style.display = 'none';
+                enButton.classList.add('active');
+                ruButton.classList.remove('active');
+            } else {
+                enText.style.display = 'none';
+                ruText.style.display = 'block';
+                enButton.classList.remove('active');
+                ruButton.classList.add('active');
+            }
+        }
+
+        function toggleAudio(id) {
+            const audio = document.getElementById(id);
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
+</body>
+</html>
