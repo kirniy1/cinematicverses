@@ -4,7 +4,7 @@
 
 ## Overview
 
-Cinematic Verses is an innovative web project that combines the art of poetry with the essence of renowned film directors. This project showcases how quickly one can go from a conceptual idea to a polished online implementation using cutting-edge AI technologies.
+Cinematic Verses is a minimal web project that combines the art of poetry with the essence of renowned film directors. This simple page showcases how quickly one can go from a conceptual idea to a polished online implementation using cutting-edge AI technologies.
 [ Here is a link to a live view of the website.
 ](https://kirniy1.github.io/cinematicverses)
 ## Features
@@ -26,7 +26,7 @@ Cinematic Verses is an innovative web project that combines the art of poetry wi
 ```
 cinematicverses/
 │
-├── cinematicverses.html
+├── index.html
 ├── styles/
 │   └── main.css
 ├── scripts/
