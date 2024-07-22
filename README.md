@@ -25,7 +25,7 @@ Cinematic Verses is an innovative web project that combines the art of poetry wi
 ```
 cinematicverses/
 │
-├── index.html
+├── cinematicverses.html
 ├── styles/
 │   └── main.css
 ├── scripts/
